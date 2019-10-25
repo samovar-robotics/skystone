@@ -32,6 +32,10 @@ public class Drive {
         this.leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
         this.rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        this.leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void Stop() {
@@ -53,10 +57,10 @@ public class Drive {
             tank(gamepad.left_stick_y, gamepad.right_stick_y);
         }
 
-        telemetry.addData("left back", leftBack.getPowerFloat());
-        telemetry.addData("right back", rightBack.getPowerFloat());
-        telemetry.addData("left front", leftFront.getPowerFloat());
-        telemetry.addData("right front", rightFront.getPowerFloat());
+        telemetry.addData("leftBack", leftBack.getPower());
+        telemetry.addData("leftFront", leftFront.getPower());
+        telemetry.addData("rightBack", rightBack.getPower());
+        telemetry.addData("rightFront", rightFront.getPower());
     }
 
     private void tank(float leftPower, float rightPower) {
@@ -68,11 +72,11 @@ public class Drive {
     }
 
     private void crab(float power) {
-        leftBack.setPower(power);
-        leftFront.setPower(-power);
+        leftBack.setPower(-power);
+        leftFront.setPower(power);
 
         rightBack.setPower(-power);
-        rightFront.setPower(-power);
+        rightFront.setPower(power);
     }
 
     private boolean isCrabbing(Gamepad g) {
