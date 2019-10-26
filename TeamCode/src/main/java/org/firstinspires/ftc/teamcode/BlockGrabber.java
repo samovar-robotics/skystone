@@ -26,17 +26,23 @@ public class BlockGrabber {
         rightServo.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
+    public void stop() {
+        leftServo.setPower(0);
+        rightServo.setPower(0);
+    }
 
-    public void go(Gamepad g) {
-        if (g.left_trigger > 0) {
+    public void operate(Gamepad g) {
+        if (g.left_trigger > 0.1) {
             leftServo.setPower(g.left_trigger);
             rightServo.setPower(g.left_trigger);
             telemetry.addLine("Grab block");
-        }
-        if (g.right_trigger > 0) {
+        } else if (g.right_trigger > 0.1) {
             leftServo.setPower(-g.right_trigger);
             rightServo.setPower(-g.right_trigger);
             telemetry.addLine("Release block");
+        } else {
+            stop();
+
         }
     }
 }

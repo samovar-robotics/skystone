@@ -20,8 +20,8 @@ public class DriverControlledOpMode extends OpMode {
     @Override
     public void loop() {
         drive.DriveOmni(gamepad1);
-        trayGrabber.go(gamepad1.left_bumper);
-        blockGrabber.go(gamepad1);
+        trayGrabber.operate(gamepad1.left_bumper);
+        blockGrabber.operate(gamepad1);
     }
 }
 

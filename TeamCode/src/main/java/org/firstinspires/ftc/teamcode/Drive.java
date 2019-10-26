@@ -28,8 +28,9 @@ public class Drive {
         this.rightFront = hardwareMap.dcMotor.get("rightFront");
 
         this.leftBack.setDirection(DcMotorSimple.Direction.FORWARD);
-        this.rightBack.setDirection(DcMotorSimple.Direction.FORWARD);
-        this.leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        this.leftFront.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        this.rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
         this.rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
 
         this.leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -38,7 +39,7 @@ public class Drive {
         this.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
-    public void Stop() {
+    public void stop() {
         leftBack.setPower(0);
         rightBack.setPower(0);
         leftFront.setPower(0);
@@ -52,9 +53,9 @@ public class Drive {
     public void DriveOmni(Gamepad gamepad) {
 
         if (isCrabbing(gamepad)) {
-            crab(gamepad.left_stick_x);
+            Crab(gamepad.left_stick_x);
         } else {
-            tank(gamepad.left_stick_y, gamepad.right_stick_y);
+            DriveTank(gamepad.left_stick_y, gamepad.right_stick_y);
         }
 
         telemetry.addData("leftBack", leftBack.getPower());
@@ -63,24 +64,26 @@ public class Drive {
         telemetry.addData("rightFront", rightFront.getPower());
     }
 
-    private void tank(float leftPower, float rightPower) {
-        leftFront.setPower(-leftPower);
-        leftBack.setPower(-leftPower);
+    public void DriveTank(float leftPower, float rightPower) {
+        leftFront.setPower(leftPower);
+        leftBack.setPower(leftPower);
 
-        rightFront.setPower(-rightPower);
-        rightBack.setPower(-rightPower);
+        rightFront.setPower(rightPower);
+        rightBack.setPower(rightPower);
     }
 
-    private void crab(float power) {
+    public void Crab(float power) {
         leftBack.setPower(-power);
         leftFront.setPower(power);
 
-        rightBack.setPower(-power);
-        rightFront.setPower(power);
+        rightBack.setPower(power);
+        rightFront.setPower(-power);
     }
 
     private boolean isCrabbing(Gamepad g) {
-        return Math.abs(g.left_stick_y) < 0.1 && Math.abs(g.right_stick_y) < 0.1 && Math.abs(g.left_stick_x) > 0.1;
+        return Math.abs(g.left_stick_y) < 0.1
+                && Math.abs(g.right_stick_y) < 0.1
+                && Math.abs(g.left_stick_x) > 0.1;
 
     }
 }

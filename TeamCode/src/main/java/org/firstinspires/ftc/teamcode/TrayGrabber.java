@@ -30,13 +30,13 @@ public class TrayGrabber {
         servo.setPosition(GRAB);
     }
 
-    public void go(boolean isPressed){
+    public void operate(boolean isPressed){
         if(isPressed){
             telemetry.addLine("Grabbing tray");
             grab();
         }
         else {
-            telemetry.addLine("Letting go of tray");
+            telemetry.addLine("Letting operate of tray");
             letGo();
         }
     }
