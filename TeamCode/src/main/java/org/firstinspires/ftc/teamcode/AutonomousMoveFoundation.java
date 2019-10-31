@@ -40,6 +40,8 @@ public class AutonomousMoveFoundation extends LinearOpMode {
             telemetry.addLine("Driving to tray");
             drive.DriveTank(0.5f, 0.5f);
         }
+        sleep(100);
+
         drive.stop();
 
 
