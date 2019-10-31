@@ -30,15 +30,18 @@ public class BlockGrabber {
         leftServo.setPower(0);
         rightServo.setPower(0);
     }
+    public void runServos(double power){
+        leftServo.setPower(power);
+        rightServo.setPower(power);
+    }
 
     public void operate(Gamepad g) {
         if (g.left_trigger > 0.1) {
-            leftServo.setPower(g.left_trigger);
-            rightServo.setPower(g.left_trigger);
+            runServos(g.left_trigger);
+
             telemetry.addLine("Grab block");
         } else if (g.right_trigger > 0.1) {
-            leftServo.setPower(-g.right_trigger);
-            rightServo.setPower(-g.right_trigger);
+            runServos(-g.right_trigger);
             telemetry.addLine("Release block");
         } else {
             stop();
