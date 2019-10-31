@@ -41,7 +41,7 @@ public class BlockGrabber {
 
             telemetry.addLine("Grab block");
         } else if (g.right_trigger > 0.1) {
-            runServos(-g.left_trigger);
+            runServos(-g.right_trigger);
             telemetry.addLine("Release block");
         } else {
             stop();
