@@ -2,14 +2,15 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class BumpSensors {
     private final HardwareMap hardwareMap;
     private final Telemetry telemetry;
-    private final com.qualcomm.robotcore.hardware.TouchSensor frontTouch;
-    private final com.qualcomm.robotcore.hardware.TouchSensor backTouch;
+    private final TouchSensor frontTouch;
+    private final TouchSensor backTouch;
 
     public BumpSensors(OpMode opMode) {
         this.hardwareMap = opMode.hardwareMap;
