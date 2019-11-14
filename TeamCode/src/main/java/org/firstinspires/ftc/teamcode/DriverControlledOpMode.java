@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class DriverControlledOpMode extends OpMode {
     private Drive drive;
     private TrayGrabber trayGrabber;
-    //private BlockGrabber blockGrabber;
     private TeamMarker teamMarker;
     private Intake intake;
     //private Elevator elevator;
@@ -16,7 +15,6 @@ public class DriverControlledOpMode extends OpMode {
     public void init() {
         drive = new Drive(this);
         trayGrabber = new TrayGrabber(this);
-        //blockGrabber = new BlockGrabber(this);
         teamMarker = new TeamMarker(this);
         intake = new Intake(this);
         //elevator = new Elevator(this);
@@ -28,7 +26,6 @@ public class DriverControlledOpMode extends OpMode {
         drive.DriveOmni(gamepad1);
         teamMarker.drop(gamepad1.right_trigger);
         trayGrabber.operate(gamepad2.left_bumper);
-        //blockGrabber.operate(gamepad2);
         intake.operate(gamepad2);
         //elevator.controlElevator(gamepad2);
     }
@@ -36,7 +33,6 @@ public class DriverControlledOpMode extends OpMode {
     public void stop(){
         drive.stop();
         intake.stop();
-       //blockGrabber.stop();
     }
 }
 
