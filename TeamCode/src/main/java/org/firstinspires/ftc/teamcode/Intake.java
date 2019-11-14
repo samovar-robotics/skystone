@@ -50,7 +50,7 @@ public class Intake {
             setPower(forward);
         }else{
             //Backward is negative because the motors need to go backwards
-            setPower(Math.round(-backward));
+            setPower(-backward);
         }
     }
 }

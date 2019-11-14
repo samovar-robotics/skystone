@@ -34,7 +34,7 @@ public class TrayGrabber {
         servo2.setPosition(GRAB);
         servo.setPosition(GRAB);
     }
-    
+
 
     public void operate(boolean isPressed){
         if(isPressed){
