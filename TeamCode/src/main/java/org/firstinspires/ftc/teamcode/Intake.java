@@ -25,8 +25,9 @@ public class Intake {
         this.leftIntake = hardwareMap.dcMotor.get("leftIntake");
         this.rightIntake = hardwareMap.dcMotor.get("rightIntake");
 
+        // motors mounted opposite each other so they counter-rotate naturally
         this.leftIntake.setDirection(DcMotorSimple.Direction.FORWARD);
-        this.rightIntake.setDirection(DcMotorSimple.Direction.REVERSE);
+        this.rightIntake.setDirection(DcMotorSimple.Direction.FORWARD);
 
         this.leftIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         this.rightIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
@@ -36,21 +37,25 @@ public class Intake {
         this.leftIntake.setPower(0);
         this.rightIntake.setPower(0);
     }
-    public void setPower(double power){
+
+    public void setPower(double power) {
+        telemetry.addData("Inteke power", power);
         this.leftIntake.setPower(power);
         this.rightIntake.setPower(power);
 
     }
 
-    public void operate(Gamepad gamepad){
+    public void operate(Gamepad gamepad) {
 
         float forward = gamepad.left_trigger;
         float backward = gamepad.right_trigger;
-        if(forward > backward){
+        if (forward > 0) {
             setPower(forward);
-        }else{
+        } else if (backward > 0) {
             //Backward is negative because the motors need to go backwards
             setPower(-backward);
+        } else {
+            stop();
         }
     }
 }
