@@ -12,7 +12,6 @@ public class Drive {
     private final Telemetry telemetry;
     private final HardwareMap hardwareMap;
     private DcMotor leftBack, rightBack, leftFront, rightFront;
-    //private double power;
 
     public Drive(OpMode opMode) {
         hardwareMap = opMode.hardwareMap;
@@ -45,10 +44,6 @@ public class Drive {
         leftFront.setPower(0);
         rightFront.setPower(0);
     }
-
-    //public void setPower(double power) {
-    //    this.power = power;
-    //}
 
     public void DriveOmni(Gamepad gamepad) {
 
