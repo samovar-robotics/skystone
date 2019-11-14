@@ -10,14 +10,13 @@ public class DriverControlledOpMode extends OpMode {
     private TrayGrabber trayGrabber;
     private TeamMarker teamMarker;
     private Intake intake;
-    //private Elevator elevator;
+
     @Override
     public void init() {
         drive = new Drive(this);
         trayGrabber = new TrayGrabber(this);
         teamMarker = new TeamMarker(this);
         intake = new Intake(this);
-        //elevator = new Elevator(this);
     }
 
     @Override
@@ -27,7 +26,6 @@ public class DriverControlledOpMode extends OpMode {
         teamMarker.drop(gamepad1.right_trigger);
         trayGrabber.operate(gamepad2.left_bumper);
         intake.operate(gamepad2);
-        //elevator.controlElevator(gamepad2);
     }
     @Override
     public void stop(){
