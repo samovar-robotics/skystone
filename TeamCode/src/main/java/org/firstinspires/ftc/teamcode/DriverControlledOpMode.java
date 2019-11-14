@@ -10,13 +10,14 @@ public class DriverControlledOpMode extends OpMode {
     private TrayGrabber trayGrabber;
     private BlockGrabber blockGrabber;
     private TeamMarker teamMarker;
-
+    //private Elevator elevator;
     @Override
     public void init() {
         drive = new Drive(this);
         trayGrabber = new TrayGrabber(this);
         blockGrabber = new BlockGrabber(this);
         teamMarker = new TeamMarker(this);
+        //elevator = new Elevator(this);
     }
 
     @Override
@@ -24,6 +25,7 @@ public class DriverControlledOpMode extends OpMode {
         drive.DriveOmni(gamepad1);
         trayGrabber.operate(gamepad2.left_bumper);
         blockGrabber.operate(gamepad2);
+        //elevator.controlElevator(gamepad2);
         teamMarker.drop(gamepad1.right_trigger);
     }
 }
