@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import java.text.DecimalFormat;
+
 public class Intake {
     private final Telemetry telemetry;
     private final HardwareMap hardwareMap;
@@ -20,8 +22,8 @@ public class Intake {
     }
 
     public void init() {
-        this.leftIntake = hardwareMap.dcMotor.get("leftBack");
-        this.rightIntake = hardwareMap.dcMotor.get("rightBack");
+        this.leftIntake = hardwareMap.dcMotor.get("leftIntake");
+        this.rightIntake = hardwareMap.dcMotor.get("rightIntake");
 
         this.leftIntake.setDirection(DcMotorSimple.Direction.FORWARD);
         this.rightIntake.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -41,13 +43,14 @@ public class Intake {
     }
 
     public void operate(Gamepad gamepad){
+
         float forward = gamepad.left_trigger;
         float backward = gamepad.right_trigger;
-        if(forward>backward){
+        if(forward > backward){
             setPower(forward);
         }else{
             //Backward is negative because the motors need to go backwards
-            setPower(-backward);
+            setPower(Math.round(-backward));
         }
     }
 }
