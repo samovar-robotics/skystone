@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+//Not right now
 public class AutonomousCompetition1 extends LinearOpMode {
     Drive drive;
     SideSensor sideSensor;

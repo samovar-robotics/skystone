@@ -4,19 +4,19 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name = "Move Foundation", group = "Competition")
+//@Autonomous(name = "Move Foundation", group = "Competition")
 public class AutonomousMoveFoundation extends LinearOpMode {
 
     Drive drive = null;
 
     private TrayGrabber trayGrabber = null;
 
-    private BumpSensors bumpSensors = null;
+    //private BumpSensors bumpSensors = null;
 
     public void initializeHardware() {
         drive = new Drive(this);
         trayGrabber = new TrayGrabber(this);
-        bumpSensors = new BumpSensors(this);
+        //bumpSensors = new BumpSensors(this);
     }
 
     @Override
@@ -30,10 +30,10 @@ public class AutonomousMoveFoundation extends LinearOpMode {
         telemetry.clearAll();
 
 
-        while (!bumpSensors.isBackTouched()) {
-            telemetry.addLine("Driving to tray");
-            drive.DriveTank(0.5f, 0.5f);
-        }
+//        while (!bumpSensors.isBackTouched()) {
+//            telemetry.addLine("Driving to tray");
+//            drive.DriveTank(0.5f, 0.5f);
+//        }
         drive.stop();
 
         telemetry.addLine("Reached tray");
@@ -43,9 +43,9 @@ public class AutonomousMoveFoundation extends LinearOpMode {
         trayGrabber.grab();
         this.sleep(2 * 1000);
 
-        while (!bumpSensors.isFrontTouched()) {
-            drive.DriveTank(-0.5f, -0.5f);
-        }
+//        while (!bumpSensors.isFrontTouched()) {
+//            drive.DriveTank(-0.5f, -0.5f);
+//        }
         drive.stop();
 
         this.sleep(2 * 1000);
