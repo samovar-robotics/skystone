@@ -72,7 +72,7 @@ public class Drive {
         rightBack.setPower(rightPower);
     }
 
-    public void Crab(float power) {
+    public void Crab(double power) {
         //POSITIVE: RIGHT
         //NEGATIVE: LEFT
         leftBack.setPower(-power);
