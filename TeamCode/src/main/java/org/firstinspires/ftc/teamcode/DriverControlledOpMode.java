@@ -10,6 +10,7 @@ public class DriverControlledOpMode extends OpMode {
     private TrayGrabber trayGrabber;
     private TeamMarker teamMarker;
     private Intake intake;
+    private Whiskers whiskers;
 
     @Override
     public void init() {
@@ -17,16 +18,18 @@ public class DriverControlledOpMode extends OpMode {
         trayGrabber = new TrayGrabber(this);
         teamMarker = new TeamMarker(this);
         intake = new Intake(this);
+        whiskers = new Whiskers(this);
     }
 
     @Override
     public void loop() {
-        
         drive.DriveOmni(gamepad1);
         teamMarker.drop(gamepad1.right_trigger);
         trayGrabber.operate(gamepad2.left_bumper);
         intake.operate(gamepad2);
+        whiskers.operate(gamepad2.a);
     }
+
     @Override
     public void stop(){
         drive.stop();
