@@ -38,13 +38,13 @@ public class Whiskers {
     private final float OPEN = 0.0f;
     private final float CLOSED = 0.5f;
 
-    private void open() {
+    private void close() {
         telemetry.addLine("opening whiskers");
         leftServo.setPosition(OPEN);
         rightServo.setPosition(1.0f-OPEN);
     }
 
-    private void close() {
+    private void open() {
         telemetry.addLine("closing whiskers");
         leftServo.setPosition(CLOSED);
         rightServo.setPosition(1.0f-CLOSED);
