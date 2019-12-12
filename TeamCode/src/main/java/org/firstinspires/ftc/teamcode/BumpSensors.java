@@ -16,11 +16,11 @@ public class BumpSensors {
         this.hardwareMap = opMode.hardwareMap;
         this.telemetry = opMode.telemetry;
 
-        frontTouch = hardwareMap.touchSensor.get("frontTouch");
-        backTouch = hardwareMap.touchSensor.get("backTouch");
+        frontTouch = hardwareMap.touchSensor.get("sideTouch");
+        backTouch = hardwareMap.touchSensor.get("frontTouch");
     }
 
-    public boolean isBackTouched() {
+    public boolean isSideTouched() {
         boolean result = backTouch.isPressed();
         telemetry.addData("Back Bump", result);
         return result;

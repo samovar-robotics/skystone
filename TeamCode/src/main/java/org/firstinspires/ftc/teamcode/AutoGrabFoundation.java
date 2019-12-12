@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="Autonomous grab foundation", group = "Competition")
-public class autonomousFoundationGuess extends LinearOpMode {
+@Autonomous(name="Autonomous Grab ", group = "Competition")
+public class AutoGrabFoundation extends LinearOpMode {
     Drive drive = null;
 
     private TrayGrabber trayGrabber = null;
@@ -19,13 +19,13 @@ public class autonomousFoundationGuess extends LinearOpMode {
         initializeHardware();
         waitForStart();
         drive.DriveTank(1,1);
-        sleep(1500);
-        drive.stop();
+        sleep(1200);
+        drive.DriveTank(.6f,.6f);
         sleep(100);
         trayGrabber.grab();
-        sleep(100);
-        drive.DriveTank(-1,-1);
-        sleep(1000);
+        sleep(400);
+        drive.DriveTank(-.75f,-.75f);
+        sleep(1700);
         drive.stop();
         sleep(100);
         trayGrabber.letGo();
