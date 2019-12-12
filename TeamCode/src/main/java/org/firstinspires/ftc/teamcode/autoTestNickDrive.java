@@ -17,6 +17,8 @@ public class autoTestNickDrive extends LinearOpMode {
         drive.stop();
         sleep(200);
         drive.goBackward();
+        sleep(1000);
+        drive.stop();
         sleep(200);
         drive.goLeft();
         sleep(1000);
