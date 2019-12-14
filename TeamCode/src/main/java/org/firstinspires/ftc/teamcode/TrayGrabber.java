@@ -9,8 +9,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class TrayGrabber {
     double LET_GO = 0;
     double GRAB = 0.5;
-    Servo servo;
-    Servo servo2;
+    Servo servoLeft;
+    Servo servoRight;
     private Telemetry telemetry;
     private HardwareMap hardwareMap;
 
@@ -19,20 +19,23 @@ public class TrayGrabber {
         telemetry = opMode.telemetry;
         hardwareMap = opMode.hardwareMap;
 
-        servo = hardwareMap.servo.get("trayGrabberL");
-        servo2 = hardwareMap.servo.get("trayGrabberR");
+        servoLeft = hardwareMap.servo.get("trayGrabberL");
+        servoRight = hardwareMap.servo.get("trayGrabberR");
+
+        servoLeft.setDirection(Servo.Direction.FORWARD);
+        servoRight.setDirection(Servo.Direction.REVERSE);
 
         letGo();
     }
 
     void letGo() {
-        servo.setPosition(LET_GO);
-        servo2.setPosition(LET_GO);
+        servoLeft.setPosition(LET_GO);
+        servoRight.setPosition(LET_GO);
     }
 
     void grab() {
-        servo2.setPosition(GRAB);
-        servo.setPosition(GRAB);
+        servoRight.setPosition(GRAB);
+        servoLeft.setPosition(GRAB);
     }
 
 
