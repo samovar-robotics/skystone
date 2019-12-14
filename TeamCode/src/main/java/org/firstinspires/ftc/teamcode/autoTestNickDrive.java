@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="Test directional drive", group = "tests")
+@Autonomous(name="Nick test directional drive", group = "tests")
 public class autoTestNickDrive extends LinearOpMode {
 
     NickDrive drive;

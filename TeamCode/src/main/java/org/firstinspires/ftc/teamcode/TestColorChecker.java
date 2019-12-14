@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name = "Test Color Checker", group = "tests")
-public class testColorChecker extends OpMode {
+public class TestColorChecker extends OpMode {
     CheckColor checkColor = null;
     @Override
     public void init() {

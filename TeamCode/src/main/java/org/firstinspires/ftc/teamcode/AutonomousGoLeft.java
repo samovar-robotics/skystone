@@ -4,8 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name = "Autonomous Right", group = "Competition")
-public class autonomousGoRight extends LinearOpMode {
+
+@Autonomous(name = "> Autonomous Go Left", group = "Competition")
+public class AutonomousGoLeft extends LinearOpMode {
     Drive drive = null;
 
 
@@ -18,7 +19,7 @@ public class autonomousGoRight extends LinearOpMode {
 
         initializeHardware();
         waitForStart();
-        drive.Crab(1);
+        drive.Crab(-1);
         sleep(750);
         drive.stop();
     }

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -19,9 +20,9 @@ public class Whiskers {
         open();
     }
 
-    public void operate(boolean isPressed) {
-        if (isPressed) {
-            close();
+    public void operate(Gamepad gamepad) {
+        if (gamepad.left_bumper || gamepad.right_bumper) {
+            grab( gamepad.left_bumper, gamepad.right_bumper);
         }
         else {
             open();
@@ -35,17 +36,29 @@ public class Whiskers {
     private Servo leftServo;
     private Servo rightServo;
 
-    private final float OPEN = 0.0f;
-    private final float CLOSED = 0.5f;
+    private final float OPEN = 0.5f;
+    private final float CLOSED = 0.0f;
 
-    private void close() {
+    private void open() {
         telemetry.addLine("opening whiskers");
         leftServo.setPosition(OPEN);
         rightServo.setPosition(1.0f-OPEN);
     }
 
-    private void open() {
-        telemetry.addLine("closing whiskers");
+    private void grab(boolean left, boolean right){
+        telemetry.addData("whiskers grabbing left", left);
+        telemetry.addData("whiskers grabbing right", right);
+        float closeAmount =  (CLOSED+ .16f);
+        if(left) {
+            leftServo.setPosition(closeAmount);
+        }
+        if(right){
+            rightServo.setPosition(1.0f-closeAmount);
+        }
+    }
+
+    private void foldedAway() {
+        telemetry.addLine("folding away whiskers");
         leftServo.setPosition(CLOSED);
         rightServo.setPosition(1.0f-CLOSED);
     }
