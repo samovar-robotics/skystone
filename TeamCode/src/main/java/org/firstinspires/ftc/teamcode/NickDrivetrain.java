@@ -19,8 +19,7 @@ public class NickDrivetrain {
         telemetry = opMode.telemetry;
         init();
     }
-
-
+    
     public void init() {
         this.leftBack = hardwareMap.dcMotor.get("leftBack");
         this.rightBack = hardwareMap.dcMotor.get("rightBack");
