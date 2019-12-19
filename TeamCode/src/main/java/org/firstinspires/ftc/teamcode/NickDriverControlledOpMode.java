@@ -26,7 +26,7 @@ public class NickDriverControlledOpMode extends OpMode {
         teamMarker.drop(gamepad1.right_trigger);
         trayGrabber.operate(gamepad2.left_bumper);
         intake.operate(gamepad2);
-        whiskers.operate(gamepad2.a);
+        whiskers.operate(gamepad2);
     }
 
     @Override
