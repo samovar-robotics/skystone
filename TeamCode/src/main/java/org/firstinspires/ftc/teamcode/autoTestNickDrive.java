@@ -6,25 +6,25 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 @Autonomous(name="Nick test directional drive", group = "tests")
 public class autoTestNickDrive extends LinearOpMode {
 
-    NickDrive drive;
+    DirectionalDrive drive;
 
     @Override
     public void runOpMode() throws InterruptedException {
-        drive = new NickDrive(this);
+        drive = new DirectionalDrive(this);
 
-        drive.goForward();
+        drive.goForward(1);
         sleep(1000);
         drive.stop();
         sleep(200);
-        drive.goBackward();
+        drive.goBackward(1);
         sleep(1000);
         drive.stop();
         sleep(200);
-        drive.goLeft();
+        drive.goLeft(1);
         sleep(1000);
         drive.stop();
         sleep(200);
-        drive.goRight();
+        drive.goRight(1);
         sleep(1000);
         drive.stop();
     }

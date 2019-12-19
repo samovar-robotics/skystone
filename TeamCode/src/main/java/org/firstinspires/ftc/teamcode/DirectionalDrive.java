@@ -8,11 +8,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class NickDrive {
+public class DirectionalDrive {
 
     private HardwareMap hardwareMap;
     private DcMotor leftBack, rightBack, leftFront, rightFront;
-    NickDrive(OpMode opMode){
+    DirectionalDrive(OpMode opMode){
         hardwareMap = opMode.hardwareMap;
 
         this.leftBack = hardwareMap.dcMotor.get("leftBack");
@@ -31,7 +31,12 @@ public class NickDrive {
         this.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-
+    void controlMotorsIndividually(float rightFrontP, float rightBackP, float leftFrontP, float leftBackP){
+        rightBack.setPower(rightBackP);
+        rightFront.setPower(rightFrontP);
+        leftBack.setPower(leftBackP);
+        leftFront.setPower(leftFrontP);
+    }
     void moveController(float x, float y) {
         rightBack.setPower((x-y)/2);
         rightFront.setPower((x+y)/2);
@@ -46,16 +51,16 @@ public class NickDrive {
         leftFront.setPower(0);
     }
 
-    void goForward(){
+    void goForward(float ps){
         moveController(0, 1);
     }
-    void goBackward(){
+    void goBackward(float p){
         moveController(0, -1);
     }
-    void goLeft(){
+    void goLeft(float p){
         moveController(-1, 0);
     }
-    void goRight() {
+    void goRight(float p) {
         moveController(1, 0);
     }
 }
