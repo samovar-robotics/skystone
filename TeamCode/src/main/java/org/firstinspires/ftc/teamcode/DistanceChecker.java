@@ -14,13 +14,21 @@ public class DistanceChecker {
     HardwareMap hardwareMap;
     Telemetry telemetry;
 
-    DistanceChecker(OpMode opMode){
+    DistanceChecker(OpMode opMode) {
         this.hardwareMap = opMode.hardwareMap;
         this.telemetry = opMode.telemetry;
-        this.distanceSensor = hardwareMap.get(DistanceSensor.class ,"sideDistanceSensor");
+        this.distanceSensor = hardwareMap.get(DistanceSensor.class, "sideDistanceSensor");
     }
 
-    double getCM(){
-        return distanceSensor.getDistance(DistanceUnit.CM);
+    double getCM() {
+        double result = distanceSensor.getDistance(DistanceUnit.CM);
+        telemetry.addData("Distance Cm", result);
+        return result;
+    }
+
+    double getInches() {
+        double result = distanceSensor.getDistance(DistanceUnit.INCH);
+        telemetry.addData("Distance Inch", result);
+        return result;
     }
 }

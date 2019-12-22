@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "test gyro #2", group="tests")
+@TeleOp(name = "Test gyro #2", group="tests")
 public class GyroConcept extends OpMode {
     RotationSensor rotationSensor = null;
 
