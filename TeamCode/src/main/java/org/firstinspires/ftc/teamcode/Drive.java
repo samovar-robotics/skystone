@@ -7,20 +7,20 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.navigation.Rotation;
 
 public class Drive {
     private final Telemetry telemetry;
     private final HardwareMap hardwareMap;
     private DcMotor leftBack, rightBack, leftFront, rightFront;
+    private final float CORRECTION_BOOST = 0.15f;
+    private RotationSensor rotationSensor;
+    private double _heading;
 
     public Drive(OpMode opMode) {
         hardwareMap = opMode.hardwareMap;
         telemetry = opMode.telemetry;
-        init();
-    }
 
-
-    public void init() {
         this.leftBack = hardwareMap.dcMotor.get("leftBack");
         this.rightBack = hardwareMap.dcMotor.get("rightBack");
         this.leftFront = hardwareMap.dcMotor.get("leftFront");
@@ -36,6 +36,8 @@ public class Drive {
         this.rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.rotationSensor = new RotationSensor(opMode);
+
     }
 
     public void stop() {
@@ -70,11 +72,29 @@ public class Drive {
     public void Crab(float power) {
         //POSITIVE: RIGHT
         //NEGATIVE: LEFT
+        float correctedPower = correct(power);
+        telemetry.addData("Corrected Power", correctedPower);
+
         leftBack.setPower(-power);
-        leftFront.setPower(power);
+        leftFront.setPower(correctedPower);
 
         rightBack.setPower(power);
-        rightFront.setPower(-power);
+        rightFront.setPower(-correctedPower);
+    }
+
+    public void lockHeading() {
+        this._heading = rotationSensor.getTurningDegrees();
+    }
+
+    private float correct(final float power) {
+        double currentHeading = rotationSensor.getTurningDegrees();
+        if (currentHeading > _heading + 1) {
+            return power + CORRECTION_BOOST * power;
+        }
+        if (currentHeading < _heading - 1) {
+            return 1 - CORRECTION_BOOST * power;
+        }
+        return power;
     }
 
     private boolean isCrabbing(Gamepad g) {

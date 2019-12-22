@@ -14,8 +14,10 @@ public class AutonomousGrabCube extends LinearOpMode {
 
     public void initializeHardware() {
         drive = new Drive(this);
+        drive.lockHeading();
         distanceChecker = new DistanceChecker(this);
         sideGrabber = new SideGrabber(this);
+
     }
 
     @Override
@@ -26,6 +28,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         waitForStart();
 
         // crab to cube
+
         resetStartTime();
         while (withinTimeBox(4) && cubeTooFar()) {
             drive.Crab(-.4f);
