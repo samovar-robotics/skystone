@@ -3,13 +3,13 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="NEW AUTO TEST BLOCK GRAB", group = "TESTTT")
+@Autonomous(name="TRYING OH PLEASE WORKKK", group = "TESTTT")
 public class BlockAutoRed extends LinearOpMode {
     DirectionalDrive drive;
     RotationSensor rotationSensor;
     DistanceChecker distanceChecker;
     SideBlockGrabber sideBlockGrabber;
-    double DISTANCEFROMBLOCK = 2;
+    double DISTANCEFROMBLOCK = 1;
 
     public void initializeHardware(){
         drive = new DirectionalDrive(this);
@@ -18,31 +18,29 @@ public class BlockAutoRed extends LinearOpMode {
         sideBlockGrabber = new SideBlockGrabber(this);
         telemetry.addLine("Initialized Hardware");
         telemetry.addLine("Don’t use “beef stew” as a computer password. It’s not stroganoff.");
+        telemetry.update();
     }
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
         initializeHardware();
+        telemetry.addLine("STARTING");
         waitForStart();
-        while (distanceChecker.getINCHES()>DISTANCEFROMBLOCK){
-            drive.goRight(1f);
+        while (distanceChecker.getINCHES()>DISTANCEFROMBLOCK && this.opModeIsActive()){
+            telemetry.addLine("Going left");
+            drive.goLeftV2(.75f);
+            telemetry.update();
+
         }
         drive.stop();
-        while (rotationSensor.getTurningDegrees()<-10){
-            drive.controlMotorsIndividually(.35f, .35f, 0, 0);
-        }
-        while (rotationSensor.getTurningDegrees()>10){
-            drive.controlMotorsIndividually(0, 0, .35f, .35f);
-        }
-        drive.stop();
-        while (distanceChecker.getINCHES()>.25){
-            drive.goRight(.25f);
-        }
-        drive.stop();
+        sleep(100);
         sideBlockGrabber.grab();
-        sleep(600);
-        drive.goLeft(1f);
-        sleep(400);
-        drive.goForward(1);
+        sleep(2000);
+        drive.goRightV2(1f);
+        sleep(1000);
+        telemetry.addLine("We about to go forward");
+        telemetry.update();
+
+        drive.goForwardV2(1);
         sleep(1500);
         drive.stop();
 

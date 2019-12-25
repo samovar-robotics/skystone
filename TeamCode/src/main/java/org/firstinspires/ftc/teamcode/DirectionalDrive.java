@@ -51,16 +51,16 @@ public class DirectionalDrive {
         leftFront.setPower(0);
     }
 
-    void goForward(float ps){
-        moveController(0, 1);
+    void goLeftV2(float p){
+        moveController(0, 1*p);
     }
-    void goBackward(float p){
+    void goRightV2(float p){
         moveController(0, -1);
     }
-    void goLeft(float p){
+    void goForwardV2(float p){
         moveController(-1, 0);
     }
-    void goRight(float p) {
+    void goBackV2(float p) {
         moveController(1, 0);
     }
 }

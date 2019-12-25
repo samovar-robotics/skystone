@@ -12,19 +12,19 @@ public class autoTestNickDrive extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         drive = new DirectionalDrive(this);
 
-        drive.goForward(1);
+        drive.goLeftV2(1);
         sleep(1000);
         drive.stop();
         sleep(200);
-        drive.goBackward(1);
+        drive.goRightV2(1);
         sleep(1000);
         drive.stop();
         sleep(200);
-        drive.goLeft(1);
+        drive.goForwardV2(1);
         sleep(1000);
         drive.stop();
         sleep(200);
-        drive.goRight(1);
+        drive.goBackV2(1);
         sleep(1000);
         drive.stop();
     }

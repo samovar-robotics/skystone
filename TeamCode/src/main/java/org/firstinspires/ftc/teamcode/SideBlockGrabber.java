@@ -17,13 +17,16 @@ public class SideBlockGrabber  {
         servo = hardwareMap.servo.get("SideGrabberServo");
         goUp();
     }
-    double GRABDISTANCE = 90;
+    double GRABDISTANCE = .42069;
     double UPDISTANCE = 0;
 
+    public double currentPosition(){
+        return this.servo.getPosition();
+    }
     public void goUp(){
-        servo.setPosition(UPDISTANCE);
+        this.servo.setPosition(UPDISTANCE);
     }
     public void grab(){
-        servo.setPosition(GRABDISTANCE);
+        this.servo.setPosition(GRABDISTANCE);
     }
 }
