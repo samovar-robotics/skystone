@@ -16,7 +16,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         drive.lockHeading();
         distanceChecker = new DistanceChecker(this);
         sideBlockGrabber = new SideBlockGrabber(this);
-
+        telemetry.addLine("Initialized Hardware");
     }
 
     @Override
@@ -25,15 +25,18 @@ public class AutonomousGrabCube extends LinearOpMode {
         initializeHardware();
 
         waitForStart();
-
+        telemetry.addLine("Start pressed");
         // crab to cube
 
         drive.lockHeading();
         resetStartTime();
+        telemetry.addLine("Going forward");
         while (withinTimeBox(4) && cubeTooFar()) {
-            drive.Crab(-.4f);
+            drive.Crab(-.5f);
+            telemetry.update();
         }
         drive.stop();
+        telemetry.addLine("Stopping to ponder the meaning of life");
         pause();
 
         sideBlockGrabber.down();
@@ -45,6 +48,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         resetStartTime();
         while(withinTimeBox(1)){
             drive.Crab(.4f);
+            telemetry.update();
         }
         drive.stop();
         pause();
@@ -53,6 +57,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         resetStartTime();
         while(withinTimeBox(1)){
             drive.DriveTank(-.5f,-.5f);
+            telemetry.update();
         }
         drive.stop();
         pause();
