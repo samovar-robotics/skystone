@@ -6,15 +6,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp(name = "Test Side Grabber", group = "tests")
 public class TestSideGrabber extends OpMode {
 
-    private SideGrabber sideGrabber;
+    private SideBlockGrabber sideBlockGrabber;
 
     @Override
     public void init() {
-        sideGrabber = new SideGrabber(this);
+        sideBlockGrabber = new SideBlockGrabber(this);
     }
 
     @Override
     public void loop() {
-        sideGrabber.operate(gamepad2);
+        sideBlockGrabber.operate(gamepad2);
     }
 }

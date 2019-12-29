@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name = "Move Foundation", group = "Competition")
+@Autonomous(name = "Move Foundation", group = "tests")
 public class AutonomousMoveFoundation extends LinearOpMode {
 
     Drive drive = null;

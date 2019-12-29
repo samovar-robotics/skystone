@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name="test distance", group = "test")
+@TeleOp(name="test distance", group = "tests")
 public class TestDistanceSensor extends OpMode {
     DistanceChecker distanceChecker;
     @Override
@@ -13,6 +13,6 @@ public class TestDistanceSensor extends OpMode {
 
     @Override
     public void loop() {
-        telemetry.addData("Distance iN Inches", this.distanceChecker.getINCHES());
+        telemetry.addData("Distance iN Inches", this.distanceChecker.getInches());
     }
 }

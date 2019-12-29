@@ -4,19 +4,18 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name = "Autonomous Grab Cube", group = "tests")
+@Autonomous(name = "> Autonomous Grab Cube", group = "competition")
 public class AutonomousGrabCube extends LinearOpMode {
     Drive drive = null;
     DistanceChecker distanceChecker = null;
-    double _timeboxStart = 0;
 
-    SideGrabber sideGrabber;
+    SideBlockGrabber sideBlockGrabber;
 
     public void initializeHardware() {
         drive = new Drive(this);
         drive.lockHeading();
         distanceChecker = new DistanceChecker(this);
-        sideGrabber = new SideGrabber(this);
+        sideBlockGrabber = new SideBlockGrabber(this);
 
     }
 
@@ -29,6 +28,7 @@ public class AutonomousGrabCube extends LinearOpMode {
 
         // crab to cube
 
+        drive.lockHeading();
         resetStartTime();
         while (withinTimeBox(4) && cubeTooFar()) {
             drive.Crab(-.4f);
@@ -36,11 +36,12 @@ public class AutonomousGrabCube extends LinearOpMode {
         drive.stop();
         pause();
 
-        sideGrabber.down();
+        sideBlockGrabber.down();
         pause();
         pause();
 
        // crab back
+        drive.lockHeading();
         resetStartTime();
         while(withinTimeBox(1)){
             drive.Crab(.4f);

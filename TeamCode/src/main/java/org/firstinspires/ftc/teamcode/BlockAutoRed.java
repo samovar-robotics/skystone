@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="TRYING OH PLEASE WORKKK", group = "TESTTT")
+@Autonomous(name="TRYING OH PLEASE WORKKK", group = "tests")
 public class BlockAutoRed extends LinearOpMode {
     DirectionalDrive drive;
     RotationSensor rotationSensor;
@@ -25,7 +25,7 @@ public class BlockAutoRed extends LinearOpMode {
         initializeHardware();
         telemetry.addLine("STARTING");
         waitForStart();
-        while (distanceChecker.getINCHES()>DISTANCEFROMBLOCK && this.opModeIsActive()){
+        while (distanceChecker.getInches()>DISTANCEFROMBLOCK && this.opModeIsActive()){
             telemetry.addLine("Going left");
             drive.goLeftV2(.75f);
             telemetry.update();
@@ -33,7 +33,7 @@ public class BlockAutoRed extends LinearOpMode {
         }
         drive.stop();
         sleep(100);
-        sideBlockGrabber.grab();
+        sideBlockGrabber.down();
         sleep(2000);
         drive.goRightV2(1f);
         sleep(1000);
