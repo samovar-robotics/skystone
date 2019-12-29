@@ -32,7 +32,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         resetStartTime();
         telemetry.addLine("Going forward");
         while (withinTimeBox(3) && cubeTooFar()) {
-            drive.Crab(-.6f);
+            drive.Crab(-.4f);
             telemetry.update();
         }
 

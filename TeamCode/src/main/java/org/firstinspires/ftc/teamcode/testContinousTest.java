@@ -27,7 +27,7 @@ public class testContinousTest extends LinearOpMode {
         resetStartTime();
         telemetry.addLine("Going forward");
         while (opModeIsActive()) {
-            drive.Crab(-.6f);
+            drive.Crab(-.4f);
             telemetry.update();
         }
     }
