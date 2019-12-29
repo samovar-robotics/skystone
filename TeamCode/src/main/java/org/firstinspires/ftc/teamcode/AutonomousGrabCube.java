@@ -11,7 +11,7 @@ public class AutonomousGrabCube extends LinearOpMode {
 
     SideBlockGrabber sideBlockGrabber;
 
-    public void initializeHardware() {
+    private void initializeHardware() {
         drive = new Drive(this);
         drive.lockHeading();
         distanceChecker = new DistanceChecker(this);
