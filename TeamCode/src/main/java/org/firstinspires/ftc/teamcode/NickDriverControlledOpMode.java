@@ -3,40 +3,35 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-
-@TeleOp(name = "> Driver Controlled", group = "competition")
-public class DriverControlledOpMode extends OpMode {
-    private Drive drive;
+@TeleOp(name = "Nick Driver Controlled", group = "tests")
+public class NickDriverControlledOpMode extends OpMode {
+    private NickDrivetrain driveClass;
     private TrayGrabber trayGrabber;
     private TeamMarker teamMarker;
     private Intake intake;
     private Whiskers whiskers;
-    private SideGrabber sideGrabber;
 
     @Override
     public void init() {
-        drive = new Drive(this);
+        driveClass = new NickDrivetrain(this);
         trayGrabber = new TrayGrabber(this);
         teamMarker = new TeamMarker(this);
         intake = new Intake(this);
         whiskers = new Whiskers(this);
-        sideGrabber = new SideGrabber(this);
     }
 
     @Override
     public void loop() {
-        drive.DriveOmni(gamepad1);
+        driveClass.drive(gamepad1);
         teamMarker.drop(gamepad1.right_trigger);
         trayGrabber.operate(gamepad2.left_bumper);
         intake.operate(gamepad2);
-        whiskers.operate(gamepad1);
-        sideGrabber.operate( gamepad2);
+        whiskers.operate(gamepad2);
     }
 
     @Override
-    public void stop(){
-        drive.stop();
+    public void stop() {
+        driveClass.stop();
         intake.stop();
     }
 }
-

@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class RotationSensor {
     private Telemetry telemetry;
-    private  HardwareMap hardwareMap;
+    private HardwareMap hardwareMap;
     public BNO055IMU imu;
     private float floorAngle1;
     private float floorAngle2;
@@ -24,11 +24,9 @@ public class RotationSensor {
     public RotationSensor(OpMode opMode) {
         hardwareMap = opMode.hardwareMap;
         telemetry = opMode.telemetry;
-        init();
-    }
-    public void init() {
         imu = initializeIMU();
     }
+
     private BNO055IMU initializeIMU() {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -37,10 +35,12 @@ public class RotationSensor {
         parameters.loggingEnabled = true;
         parameters.loggingTag = "IMU";
         parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-        imu.initialize(parameters);
+        this.imu = hardwareMap.get(BNO055IMU.class, "imu");
+        this.imu.initialize(parameters);
+
         return imu;
     }
+
     public double getTurningDegrees() {
         Orientation orientation = getOrientation();
         double angleInDegrees = AngleUnit.DEGREES.fromUnit(orientation.angleUnit, orientation.firstAngle);
@@ -79,6 +79,7 @@ public class RotationSensor {
     public String toString(double degrees) {
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
+
 
 
 }

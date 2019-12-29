@@ -1,34 +1,34 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class DistanceChecker {
+    DistanceSensor distanceSensor;
     HardwareMap hardwareMap;
     Telemetry telemetry;
 
-    DistanceSensor sensor;
-    Rev2mDistanceSensor sensorConfigured;
-    DistanceChecker(OpMode opMode){
+    DistanceChecker(OpMode opMode) {
         this.hardwareMap = opMode.hardwareMap;
         this.telemetry = opMode.telemetry;
-        sensor = (hardwareMap.get(DistanceSensor.class, "sideDistanceSensor"));
-        sensorConfigured = (Rev2mDistanceSensor)sensor;
-
-    }
-    public double getINCHES(){
-        telemetry.addData("Distance in Inches", sensor.getDistance(DistanceUnit.INCH));
-        return sensorConfigured.getDistance(DistanceUnit.INCH);
-
+        this.distanceSensor = hardwareMap.get(DistanceSensor.class, "sideDistanceSensor");
     }
 
-    public double getCM(){
-        return sensorConfigured.getDistance(DistanceUnit.CM);
+    double getCM() {
+        double result = distanceSensor.getDistance(DistanceUnit.CM);
+        telemetry.addData("Distance Cm", result);
+        return result;
     }
 
+    double getInches() {
+        double result = distanceSensor.getDistance(DistanceUnit.INCH);
+        telemetry.addData("Distance Inch", result);
+        return result;
+    }
 }

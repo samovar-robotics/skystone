@@ -5,28 +5,21 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "test gyro #2", group="tests")
-public class GyroConcept extends OpMode {
+@TeleOp(name = "Test Gyro", group = "tests")
+public class TestGyro extends OpMode {
     RotationSensor rotationSensor = null;
-
 
 
     @Override
     public void init() {
-        telemetry.addLine("INITIALZEDD NOT PSYCHE");
-        telemetry.addLine("Started");
-        rotationSensor = new RotationSensor(this);
         telemetry.addLine("Started Init");
-        rotationSensor.init();
+        rotationSensor = new RotationSensor(this);
         telemetry.addLine("Initialized");
     }
 
     @Override
     public void loop() {
-        double angle =  rotationSensor.getTurningDegrees();
-        telemetry.addData(
-                "Angle", angle
-        );
-
+        double angle = rotationSensor.getTurningDegrees();
+        telemetry.addData("Angle", angle);
     }
 }
