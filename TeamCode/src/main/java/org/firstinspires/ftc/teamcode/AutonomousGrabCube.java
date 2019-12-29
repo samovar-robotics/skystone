@@ -31,10 +31,11 @@ public class AutonomousGrabCube extends LinearOpMode {
         drive.lockHeading();
         resetStartTime();
         telemetry.addLine("Going forward");
-        while (withinTimeBox(4) && cubeTooFar()) {
-            drive.Crab(-.5f);
+        while (withinTimeBox(3) && cubeTooFar()) {
+            drive.Crab(-.6f);
             telemetry.update();
         }
+
         drive.stop();
         telemetry.addLine("Stopping to ponder the meaning of life");
         pause();
