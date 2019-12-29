@@ -40,7 +40,7 @@ public class AutonomousGrabFoundationGuess extends LinearOpMode {
         sleep(1000);
     }
 
-    long distanceTime(float inches) {
+    static long distanceTime(float inches) {
         return (long) (22.26 * inches);
     }
 }

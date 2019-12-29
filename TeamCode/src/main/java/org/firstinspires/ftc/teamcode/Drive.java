@@ -92,7 +92,7 @@ public class Drive {
             return power + CORRECTION_BOOST * power;
         }
         if (currentHeading < _heading - 1) {
-            return 1 - CORRECTION_BOOST * power;
+            return power - CORRECTION_BOOST * power;
         }
         return power;
     }
