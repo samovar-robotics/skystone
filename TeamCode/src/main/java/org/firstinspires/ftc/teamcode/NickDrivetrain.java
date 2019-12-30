@@ -50,10 +50,10 @@ public class NickDrivetrain {
         float y0 = gamepad.right_stick_y;
         float x1 = gamepad.left_stick_x;
         float y1 = gamepad.left_stick_y;
-        rightBack.setPower(y0-x0);
-        rightFront.setPower(y0+x0);
-        leftFront.setPower(y1-x1);
-        leftBack.setPower(y1+x1);
+        rightBack.setPower(y0+x0/2);
+        rightFront.setPower(y0-x0/2);
+        leftFront.setPower(y1+x1/2);
+        leftBack.setPower(y1-x1/2);
     }
 
     private float toMotorLimit(float f) {

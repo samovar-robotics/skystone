@@ -103,4 +103,53 @@ public class Drive {
                 && Math.abs(g.left_stick_x) > 0.1;
 
     }
+
+
+
+
+
+    public void autonomousCorrectedDrive(float xComponent, float yComponent) {
+        float y = xComponent;
+        float x = yComponent;
+
+        float turnRatio = (float) (.0001);
+        double currentHeading = rotationSensor.getTurningDegrees();
+        float turnComponent = (float) (currentHeading)*turnRatio; //from -1 to 1
+
+        rightBack.setPower((x-y) + turnComponent);
+        rightFront.setPower((x+y) + turnComponent);
+        leftFront.setPower((x-y) - turnComponent);
+        leftBack.setPower((x+y) - turnComponent);
+    }
+
+
+    public void omniDrive(Gamepad gamepad){ //not finished, needs a rotational tracker
+        float x0 = gamepad.right_stick_x;
+        float y0 = gamepad.right_stick_y;
+        float x1 = gamepad.left_stick_x;
+        float y1 = gamepad.left_stick_y;
+        if(Math.abs(Math.abs(gamepad.right_stick_x) - Math.abs(gamepad.left_stick_x)) < .15) { //same x components
+            if(Math.abs(Math.abs(gamepad.right_stick_x) - Math.abs(gamepad.left_stick_x)) < .15) { //same y components
+                float x = (x0 + x1)/2; //averages values
+                float y = (y0 + y1)/2;
+            }
+            if (Math.abs(gamepad.right_stick_x) + Math.abs(gamepad.left_stick_x) < .15) { //almost tank drive
+
+
+            }
+        }
+
+        float turnRatio = (float) (.0001);
+        double currentHeading = rotationSensor.getTurningDegrees();
+        float turnComponent = (float) (currentHeading)*turnRatio; //from -1 to 1
+
+        rightBack.setPower((x0-y0) + turnComponent);
+        rightFront.setPower((x0+y0) + turnComponent);
+        leftFront.setPower((x1-y1) - turnComponent);
+        leftBack.setPower((x1+y1) - turnComponent);
+
+    }
+
+
+
 }
