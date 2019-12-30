@@ -32,7 +32,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         resetStartTime();
         telemetry.addLine("Going forward");
         while (withinTimeBox(3) && cubeTooFar()) {
-            drive.Crab(-.4f);
+            drive.autonomousCorrectedDrive(0.4f,0.0f);
             telemetry.update();
         }
 
@@ -47,17 +47,18 @@ public class AutonomousGrabCube extends LinearOpMode {
        // crab back
         drive.lockHeading();
         resetStartTime();
-        while(withinTimeBox(1)){
-            drive.Crab(.4f);
+        while(withinTimeBox(1.33)){
+            drive.autonomousCorrectedDrive(-0.4f,0.0f);
             telemetry.update();
         }
         drive.stop();
         pause();
 
        // go to bridge
+        drive.lockHeading();
         resetStartTime();
-        while(withinTimeBox(1)){
-            drive.DriveTank(-.5f,-.5f);
+        while(withinTimeBox(1.66)){
+            drive.autonomousCorrectedDrive(0.0f,-0.5f);
             telemetry.update();
         }
         drive.stop();
