@@ -108,18 +108,16 @@ public class Drive {
 
 
 
-    public void autonomousCorrectedDrive(float xComponent, float yComponent) {
-        float y = xComponent;
-        float x = yComponent;
+    public void autonomousCorrectedDrive(float x, float y) {
 
-        float turnRatio = (float) (.0001);
+        float turnRatio = .0001f;
         double currentHeading = rotationSensor.getTurningDegrees();
         float turnComponent = (float) (currentHeading)*turnRatio; //from -1 to 1
 
-        rightBack.setPower((x-y) + turnComponent);
-        rightFront.setPower((x+y) + turnComponent);
-        leftFront.setPower((x-y) - turnComponent);
-        leftBack.setPower((x+y) - turnComponent);
+        rightBack.setPower((y - x) + turnComponent);
+        rightFront.setPower((y + x) + turnComponent);
+        leftFront.setPower((y - x) - turnComponent);
+        leftBack.setPower((y + x) - turnComponent);
     }
 
 
