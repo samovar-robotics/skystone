@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name = "> Autonomous Grab Foundation Guess", group = "Competition")
-public class AutonomousGrabFoundationGuess extends LinearOpMode {
+@Autonomous(name = "> Autonomous Grab Foundation", group = "Competition")
+public class AutonomousGrabFoundation extends LinearOpMode {
     private static final long FORWARD_INCHES = 52;
     private static final long BACKWARD_INCHES = 48;
 
