@@ -62,6 +62,7 @@ public class Drive {
     }
 
     public void DriveTank(float leftPower, float rightPower) {
+
         leftFront.setPower(leftPower);
         leftBack.setPower(leftPower);
 
@@ -76,7 +77,8 @@ public class Drive {
         telemetry.addData("Corrected Power", correctedPower);
 
         leftBack.setPower(-power);
-        leftFront.setPower(correctedPower);
+        //MAYBE SWITCH +/-
+        leftFront.setPower(+correctedPower);
 
         rightBack.setPower(power);
         rightFront.setPower(-correctedPower);

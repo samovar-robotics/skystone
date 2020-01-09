@@ -31,8 +31,8 @@ public class AutonomousGrabCube extends LinearOpMode {
         drive.lockHeading();
         resetStartTime();
         telemetry.addLine("Going forward");
-        while (withinTimeBox(3) && cubeTooFar()) {
-            drive.autonomousCorrectedDrive(0.4f,0.0f);
+        while (withinTimeBox(4) && cubeTooFar()) {
+            drive.Crab(-.5f);
             telemetry.update();
         }
 
@@ -45,30 +45,35 @@ public class AutonomousGrabCube extends LinearOpMode {
         pause();
 
        // crab back
-        drive.lockHeading();
         resetStartTime();
-        while(withinTimeBox(1.33)){
-            drive.autonomousCorrectedDrive(-0.4f,0.0f);
+        while(withinTimeBox(1.5)){
+            drive.Crab(.5f);
             telemetry.update();
         }
         drive.stop();
         pause();
 
        // go to bridge
-        drive.lockHeading();
         resetStartTime();
-        while(withinTimeBox(1.66)){
-            drive.autonomousCorrectedDrive(0.0f,-0.5f);
+        while (withinTimeBox(4)){
+            drive.Crab(-.6f);
             telemetry.update();
         }
         drive.stop();
         pause();
+        sideBlockGrabber.release();
+        pause();
+        pause();
+        resetStartTime();
+        while (withinTimeBox(1)){
+            drive.DriveTank(.5f, .5f);
+        }
 
     }
 
 
     private boolean cubeTooFar() {
-        return distanceChecker.getInches() > 2;
+        return distanceChecker.getInches() > 1.5;
     }
 
     private boolean withinTimeBox(double seconds) {
