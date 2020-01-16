@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Test Color Checker", group = "tests")
+//@TeleOp(name = "Test Color Checker", group = "tests")
 public class TestColorChecker extends OpMode {
     CheckColor checkColor = null;
     @Override

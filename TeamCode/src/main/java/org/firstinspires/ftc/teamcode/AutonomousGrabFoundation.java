@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 @Autonomous(name = "> Autonomous Grab Foundation", group = "Competition")
 public class AutonomousGrabFoundation extends LinearOpMode {
     private static final long FORWARD_INCHES = 52;
-    private static final long BACKWARD_INCHES = 48;
+    private static final long BACKWARD_INCHES = 53;
 
     Drive drive = null;
 

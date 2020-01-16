@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Test Distance Sensor", group = "tests")
+//@TeleOp(name = "Test Distance Sensor", group = "tests")
 public class TestDistanceSensors extends OpMode {
 
     private DistanceChecker distanceChecker;

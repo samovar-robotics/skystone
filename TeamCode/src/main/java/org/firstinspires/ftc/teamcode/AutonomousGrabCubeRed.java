@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name = "> Autonomous Grab Cube", group = "competition")
-public class AutonomousGrabCube extends LinearOpMode {
+@Autonomous(name = "> Autonomous Grab Cube Red", group = "competition")
+public class AutonomousGrabCubeRed extends LinearOpMode {
     Drive drive = null;
     DistanceChecker distanceChecker = null;
 
@@ -32,7 +32,7 @@ public class AutonomousGrabCube extends LinearOpMode {
         resetStartTime();
         telemetry.addLine("Going forward");
         while (withinTimeBox(4) && cubeTooFar()) {
-            drive.Crab(-.5f);
+            drive.autonomousCorrectedDrive(.5f, 0, 1);
             telemetry.update();
         }
 
@@ -47,7 +47,7 @@ public class AutonomousGrabCube extends LinearOpMode {
        // crab back
         resetStartTime();
         while(withinTimeBox(1.5)){
-            drive.Crab(.5f);
+            drive.autonomousCorrectedDrive(-.5f, 0, 2);
             telemetry.update();
         }
         drive.stop();
@@ -55,18 +55,19 @@ public class AutonomousGrabCube extends LinearOpMode {
 
        // go to bridge
         resetStartTime();
-        while (withinTimeBox(4)){
-            drive.Crab(-.6f);
+
+        while (withinTimeBox(2.5)){
             telemetry.update();
+            drive.autonomousCorrectedDrive(0, -.5f,2.25f);
         }
         drive.stop();
         pause();
-        sideBlockGrabber.release();
+        sideBlockGrabber.up();
         pause();
         pause();
         resetStartTime();
-        while (withinTimeBox(1)){
-            drive.DriveTank(.5f, .5f);
+        while (withinTimeBox(1.5)){
+            drive.autonomousCorrectedDrive(0, .5f, 1);
         }
 
     }

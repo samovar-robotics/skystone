@@ -30,6 +30,9 @@ class SideBlockGrabber {
         telemetry.addData("release is", RELEASE);
 
     }
+    public double currentPosition(){
+        return upDownServo.getPosition();
+    }
 
     public void up() {
         telemetry.addData("SideBlockGrabber up", UP);

@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="Test Crab Orientation Checker", group = "tests")
+//@Autonomous(name="Test Crab Orientation Checker", group = "tests")
 public class testContinousTest extends LinearOpMode {
     Drive drive = null;
     //DistanceChecker distanceChecker = null;
