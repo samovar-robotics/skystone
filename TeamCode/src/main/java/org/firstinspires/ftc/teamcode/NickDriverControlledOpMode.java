@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Nick Driver Controlled", group = "tests")
+//@TeleOp(name = "Nick Driver Controlled", group = "tests")
 public class NickDriverControlledOpMode extends OpMode {
     private NickDrivetrain driveClass;
     private TrayGrabber trayGrabber;

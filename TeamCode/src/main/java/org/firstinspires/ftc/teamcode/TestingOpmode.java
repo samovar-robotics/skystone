@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="ALR IDK WHAT  THIS IS GONNA DO BUT LETS DO ITTTTT", group = "tests")
+//@Autonomous(name="ALR IDK WHAT  THIS IS GONNA DO BUT LETS DO ITTTTT", group = "tests")
 public class TestingOpmode extends LinearOpMode {
     public static final float POWER = 0.8f;
     Drive drive;
