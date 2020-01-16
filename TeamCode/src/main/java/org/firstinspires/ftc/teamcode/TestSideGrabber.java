@@ -16,5 +16,6 @@ public class TestSideGrabber extends OpMode {
     @Override
     public void loop() {
         sideBlockGrabber.operate(gamepad2);
+        telemetry.addData("DATA",sideBlockGrabber.currentPosition());
     }
 }

@@ -19,19 +19,19 @@ public class TestingOpmode extends LinearOpMode {
         initializeHardware();
         waitForStart();
         //LEFT
-        drive.autonomousCorrectedDrive(POWER, 0);
-        sleep(1000);
-        drive.stop();
-        //BACK
-        drive.autonomousCorrectedDrive(0, POWER);
-        sleep(1000);
-        drive.stop();
-        //RIGHT
-        drive.autonomousCorrectedDrive(-POWER, 0);
-        sleep(1000);
-        drive.stop();
-        //FORWARD
-        drive.autonomousCorrectedDrive(0, -POWER);
+//        drive.autonomousCorrectedDrive(POWER, 0);
+//        sleep(1000);
+//        drive.stop();
+//        //BACK
+//        drive.autonomousCorrectedDrive(0, POWER);
+//        sleep(1000);
+//        drive.stop();
+//        //RIGHT
+//        drive.autonomousCorrectedDrive(-POWER, 0);
+//        sleep(1000);
+//        drive.stop();
+//        //FORWARD
+//        drive.autonomousCorrectedDrive(0, -POWER);
         sleep(1000);
         drive.stop();
         sleep(400);

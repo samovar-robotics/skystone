@@ -84,11 +84,35 @@ public class Drive {
         rightFront.setPower(-correctedPower);
     }
 
+    public void CrabBackwards(float power) {
+        //POSITIVE: RIGHT
+        //NEGATIVE: LEFT
+        float correctedPower = correctBackward(power);
+        telemetry.addData("Corrected Power", correctedPower);
+
+        leftBack.setPower(-power);
+        //MAYBE SWITCH +/-
+        leftFront.setPower(+correctedPower);
+
+        rightBack.setPower(power);
+        rightFront.setPower(-correctedPower);
+    }
+
     public void lockHeading() {
         this._heading = rotationSensor.getTurningDegrees();
     }
 
     private float correct(final float power) {
+        double currentHeading = rotationSensor.getTurningDegrees();
+        if (currentHeading > _heading + 1) {
+            return power + CORRECTION_BOOST * power;
+        }
+        if (currentHeading < _heading - 1) {
+            return power - CORRECTION_BOOST * power;
+        }
+        return power;
+    }
+    private float correctBackward(final float power) {
         double currentHeading = rotationSensor.getTurningDegrees();
         if (currentHeading > _heading + 1) {
             return power + CORRECTION_BOOST * power;
@@ -110,9 +134,9 @@ public class Drive {
 
 
 
-    public void autonomousCorrectedDrive(float x, float y) {
+    public void autonomousCorrectedDrive(float x, float y, float multiplier) {
 
-        float turnRatio = .0001f;
+        float turnRatio = .015f*multiplier;
         double currentHeading = rotationSensor.getTurningDegrees();
         float turnComponent = (float) (currentHeading)*turnRatio; //from -1 to 1
 

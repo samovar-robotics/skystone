@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -14,7 +15,12 @@ public class TeamMarker {
         markerServo = opMode.hardwareMap.servo.get("teamMarkerServo");
         markerServo.setPosition(0);
     }
+    public void operate(Gamepad gamepad){
+        if(gamepad.x){
+            drop(targetPosition);
+        }
 
+    }
     public void drop(double targetPosition) {
         telemetry.addLine("Dropping marker");
         markerServo.setPosition(targetPosition);
