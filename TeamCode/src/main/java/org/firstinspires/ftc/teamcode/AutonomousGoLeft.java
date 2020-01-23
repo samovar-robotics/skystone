@@ -19,6 +19,7 @@ public class AutonomousGoLeft extends LinearOpMode {
 
         initializeHardware();
         waitForStart();
+        sleep(25000);
         drive.Crab(-1);
         sleep(750);
         drive.stop();

@@ -146,6 +146,19 @@ public class Drive {
         leftBack.setPower((y + x) - turnComponent);
     }
 
+    public void autonomousSelfCorrect(){
+        float tolerance = 2;
+        double currentHeading = rotationSensor.getTurningDegrees();
+        if(Math.abs(currentHeading)>tolerance) {
+            float turnRatio = .015f;
+            float turnComponent = (float) (currentHeading) * turnRatio;
+
+            rightBack.setPower(turnComponent);
+            rightFront.setPower(turnComponent);
+            leftFront.setPower(-turnComponent);
+            leftBack.setPower(-turnComponent);
+        }
+    }
 
     public void omniDrive(Gamepad gamepad){ //not finished, needs a rotational tracker
         float x0 = gamepad.right_stick_x;

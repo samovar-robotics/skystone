@@ -17,7 +17,7 @@ public class Whiskers {
         leftServo = hardwareMap.servo.get("whiskerL");
         rightServo = hardwareMap.servo.get("whiskerR");
 
-        open();
+        //open();
     }
 
     public void operate(Gamepad gamepad) {

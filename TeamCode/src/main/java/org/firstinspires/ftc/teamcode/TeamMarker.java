@@ -18,6 +18,8 @@ public class TeamMarker {
 
     public void drop(double targetPosition) {
         telemetry.addLine("Dropping marker");
+        telemetry.addLine("NGL this is sorta an SMHHH");
+        telemetry.addData("Woahhh we got a position", targetPosition);
         markerServo.setPosition(targetPosition);
     }
 }
