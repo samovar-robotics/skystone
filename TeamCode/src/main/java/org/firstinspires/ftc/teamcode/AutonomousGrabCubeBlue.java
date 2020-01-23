@@ -56,7 +56,7 @@ public class AutonomousGrabCubeBlue extends LinearOpMode {
         // go to bridge
         resetStartTime();
 
-        while (withinTimeBox(2.5)){
+        while (withinTimeBox(3.5)){
             telemetry.update();
             drive.autonomousCorrectedDrive(0, .5f,2.25f);
         }
