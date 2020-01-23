@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name = "> Autonomous Grab Foundation V2", group = "Competition")
-public class AutoGrabTrayV2 extends LinearOpMode {
+@Autonomous(name = "> Autonomous Grab Foundation Blue", group = "Competition")
+public class AutoGrabTrayV2Blue extends LinearOpMode {
     private static final long FORWARD_INCHES = 52;
     private static final long BACKWARD_INCHES = 60;
 
@@ -22,7 +22,7 @@ public class AutoGrabTrayV2 extends LinearOpMode {
         initializeHardware();
         drive.lockHeading();
         waitForStart();
-        drive.autonomousCorrectedDrive(-.4f, 0, 1);
+        drive.autonomousCorrectedDrive(.4f, 0, 1);
         sleep(1500);
         drive.stop();
         sleep(100);
