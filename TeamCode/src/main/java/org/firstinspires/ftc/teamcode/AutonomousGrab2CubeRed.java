@@ -55,13 +55,10 @@ public class AutonomousGrab2CubeRed extends LinearOpMode {
         pause();
         pause();
         resetStartTime();
-        while (withinTimeBox(1.5)){
-            drive.autonomousSelfCorrect();
-        }
         drive.stop();
         pause();
         resetStartTime();
-        crabForTime(4, 0, 0.6f, 1);
+        crabForTime(4, 0, 0.6f, 2);
         drive.stop();
         pause();
         resetStartTime();
@@ -73,7 +70,7 @@ public class AutonomousGrab2CubeRed extends LinearOpMode {
         pause();
         pause();
         crabForTime(1.5, -.6f, 0f, 2);
-        crabForTime(2,0, -0.5f, 1);
+        crabForTime(4,0, -0.5f, 2);
         drive.stop();
         sideBlockGrabber.up();
         pause();

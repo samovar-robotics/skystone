@@ -26,59 +26,70 @@ public class AutonomousGrab2CubeBlue extends LinearOpMode {
 
         waitForStart();
         telemetry.addLine("Start pressed");
-        // crab to cube
-
         drive.lockHeading();
         resetStartTime();
         telemetry.addLine("Going forward");
-        driveTowardCubes( .5f, 1);
+
+        // crab to cube
+        driveTowardCubes( .5f, 3);
 
         drive.stop();
         telemetry.addLine("Stopping to ponder the meaning of life");
         pause();
 
+        //Grab Block
         sideBlockGrabber.down();
         pause();
         pause();
+        pause();
+        pause();
 
-        // crab back
-        crabForTime(1.5, -.5f, 0, 2);
+        // crab backwards
+        crabForTime(.6, -.8f, 0, 2.5f);
         drive.stop();
         pause();
 
         // go to bridge
         resetStartTime();
-        crabForTime(3.5, 0, 0.5f, 2.25f);
+        crabForTime(1.8, 0, 0.8f, 2.3f);
         drive.stop();
         pause();
+
+        //Release Block
         sideBlockGrabber.up();
         pause();
         pause();
+        pause();
+        //Go back
         resetStartTime();
-        while (withinTimeBox(1.5)){
-            drive.autonomousSelfCorrect();
-        }
+        crabForTime(2, 0, -1f, 1.25f);
         drive.stop();
         pause();
+
+        //DRIVE TOWARDS CUBE
         resetStartTime();
-        crabForTime(4, 0, -0.6f, 1);
+        driveTowardCubes(.4f, 2);
         drive.stop();
-        pause();
-        resetStartTime();
-        driveTowardCubes(.3f, 1);
-        resetStartTime();
-        drive.stop();
+
+        //GRAB CUBE #2
         sleep(100);
         sideBlockGrabber.down();
         pause();
         pause();
-        crabForTime(1.5, -.6f, 0f, 2);
-        crabForTime(2,0, 0.5f, 1);
+        pause();
+        pause();
+
+        //CRAB BACK
+        crabForTime(1, -.8f, 0f, 2);
+        //CRAB TO BRIDGE
+        crabForTime(2.5,0, 0.8f, 2);
         drive.stop();
         sideBlockGrabber.up();
         pause();
         pause();
-        crabForTime(2,0,-.5f, 1);
+        pause();
+
+        crabForTime(.5,0,-.5f, 2);
 //        sideBlockGrabber.down();
 //        pause();
 //        pause();
@@ -132,6 +143,6 @@ public class AutonomousGrab2CubeBlue extends LinearOpMode {
     }
 
     private void pause() {
-        sleep(1000);
+        sleep(400);
     }
 }

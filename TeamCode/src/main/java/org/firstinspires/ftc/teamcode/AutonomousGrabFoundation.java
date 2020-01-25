@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name = "> Autonomous Grab Foundation", group = "Competition")
+@Autonomous(name = "> Autonomous Grab Foundation OMFG Work", group = "Competition")
 public class AutonomousGrabFoundation extends LinearOpMode {
     private static final long FORWARD_INCHES = 52;
     private static final long BACKWARD_INCHES = 53;
@@ -21,19 +21,24 @@ public class AutonomousGrabFoundation extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         initializeHardware();
         waitForStart();
-        drive.DriveTank(1, 1);
+        drive.autonomousCorrectedDrive(.4f, 0, 1);
+        sleep(1300);
+        drive.stop();
+        drive.DriveTank(.6f, .6f);
         sleep(distanceTime(FORWARD_INCHES));
         drive.stop();
-        sleep(1000);
+        sleep(3000);
         trayGrabber.grab();
         waitForServo();
-        drive.DriveTank(-1, -1);
+        drive.DriveTank(-.6f, -.6f);
         sleep(distanceTime(BACKWARD_INCHES));
         drive.stop();
         sleep(1000);
         trayGrabber.letGo();
         waitForServo();
-
+        drive.autonomousCorrectedDrive(-.4f, 0, 1);
+        sleep(800);
+        drive.stop();
     }
 
     private void waitForServo() {
