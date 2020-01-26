@@ -150,7 +150,7 @@ public class Drive {
         float tolerance = 2;
         double currentHeading = rotationSensor.getTurningDegrees();
         if(Math.abs(currentHeading)>tolerance) {
-            float turnRatio = .015f;
+            float turnRatio = .115f;
             float turnComponent = (float) (currentHeading) * turnRatio;
 
             rightBack.setPower(turnComponent);
