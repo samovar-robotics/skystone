@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Whiskers {
+    private boolean holdWiskersClosed;
 
     public Whiskers(OpMode opMode) {
 
@@ -16,16 +17,25 @@ public class Whiskers {
 
         leftServo = hardwareMap.servo.get("whiskerL");
         rightServo = hardwareMap.servo.get("whiskerR");
-
-        //open();
+        holdWiskersClosed = false;
     }
 
-    public void operate(Gamepad gamepad) {
-        if (gamepad.left_bumper || gamepad.right_bumper) {
-            grab( gamepad.left_bumper, gamepad.right_bumper);
+    public void operate(Gamepad gamepad) { // Working close lock
+        if (gamepad.y) {
+            holdWiskersClosed = true;
+        } else if (gamepad.a) {
+            holdWiskersClosed = false;
         }
-        else {
-            open();
+
+        if (holdWiskersClosed) {
+            telemetry.addData("Locked closed", true);
+            movingClosed();
+        } else {
+            if (gamepad.left_bumper || gamepad.right_bumper) {
+                grab(gamepad.left_bumper, gamepad.right_bumper);
+            } else {
+                open();
+            }
         }
     }
 
@@ -43,6 +53,12 @@ public class Whiskers {
         telemetry.addLine("opening whiskers");
         leftServo.setPosition(OPEN);
         rightServo.setPosition(1.0f-OPEN);
+    }
+
+    private void movingClosed() {
+        float closeAmount =  (CLOSED+ .16f);
+        leftServo.setPosition(closeAmount);
+        rightServo.setPosition(1.0f-closeAmount);
     }
 
     private void grab(boolean left, boolean right){
